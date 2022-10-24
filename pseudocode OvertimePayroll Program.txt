@@ -1,0 +1,39 @@
+start
+	Declarations
+		string name
+		num hours
+		num RATE = 15.00
+		num WORK_WEEK = 40
+		num OVERTIME = 1.5
+		num pay
+		string QUIT = "ZZZ"
+	housekeeping()
+	while name <> QUIT
+		detailLoop()
+	endwhile
+	finish()
+stop
+
+housekeeping()
+	output "This program computes payroll based on"
+	output "overtime rate of", OVERTIME, "after ", WORK_WEEK, " hours."
+	output "Enter employee name or ", QUIT, " to quit >> "
+	input name
+return
+
+detailLoop()
+	output " Enter hours worked >> " 
+	input hours
+	if hours > WORK_WEEK then
+		pay = pay = (WORK_WEEK * RATE) + (hours - WORK_WEEK) * RATE * OVERTIME
+	else
+		pay = hours * RATE
+	endif
+	output "Pay for " , name, " is $", pay
+	output "Enter employee name or ", QUIT, "to quit >> " 
+	input name
+return
+
+finish()
+	output "Overtime pay calculations complete"
+return
